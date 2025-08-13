@@ -1,13 +1,12 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Required for GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -18,6 +17,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      NOTION_POSTS_DATABASE_ID: ${{ secrets.NOTION_POSTS_DATABASE_ID }}
+      CI: "true"
+      GITHUB_REPOSITORY: ${{ github.repository }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,13 +36,18 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Sync Notion content
+        run: npm run sync:notion
+
+      - name: Build & Export
+        run: |
+          npm run build
+          npm run export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./out   # Next.js static export folder
 
   deploy:
     runs-on: ubuntu-latest
