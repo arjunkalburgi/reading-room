@@ -18,8 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-      NOTION_POSTS_DATABASE_ID: ${{ secrets.NOTION_POSTS_DATABASE_ID }}
+      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
       CI: "true"
       GITHUB_REPOSITORY: ${{ github.repository }}
 
@@ -31,23 +31,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
+          cache: 'npm'
 
       - name: Install deps
         run: npm ci
 
-      - name: Sync Notion content
-        run: npm run sync:notion
+      # "prebuild" handles this sync step.
+      # - name: Sync Notion content
+      #   run: npm run sync:notion
 
-      - name: Build & Export
-        run: |
-          npm run build
-          npm run export
+      - name: Build (exports via next.config's 'output')
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out   # Next.js static export folder
+          path: ./out
 
   deploy:
     runs-on: ubuntu-latest

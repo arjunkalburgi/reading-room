@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "sync:notion": "node ./notion_sync/sync.mjs",
+    "prebuild": "npm run sync:notion",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
