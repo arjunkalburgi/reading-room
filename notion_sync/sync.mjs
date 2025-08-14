@@ -106,13 +106,13 @@ async function main() {
     
     for (const page of query.results) {
         const pageId = page.id
-        const title = getProp(page, 'Title')
+        const title = getProp(page, 'Name')
         const slug =
         getProp(page, 'Slug') ||
         title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
         const date = getProp(page, 'Date')
-        const tags = getProp(page, 'Tags')
         const summary = getProp(page, 'Summary')
+        const contentType = getProp(page, 'Content type');
         
         console.log(`Fetching recordMap for: ${title} (${slug})`)
         const recordMap = await notionUnofficial.getPage(pageId)
@@ -143,7 +143,7 @@ async function main() {
         .map(b => b?.value)
         .find(b => b?.type === 'image')?.properties?.source?.[0]?.[0] || null
         
-        indexMeta.push({ title, slug, date, tags, summary, hero, readingMinutes })
+        indexMeta.push({ title, slug, date, tags, summary, hero, contentType, readingMinutes })
     }
     
     fs.writeFileSync(path.join(DATA_DIR, 'index.json'), JSON.stringify(indexMeta, null, 2))

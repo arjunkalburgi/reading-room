@@ -1,0 +1,44 @@
+div.post-container {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 10rem;
+    padding-right: 0rem;
+    padding-left: 0rem;
+    max-width: 700px;
+}
+
+@media screen and (min-width: 1240px) {
+    div.post-container {
+        max-width: 1000px;
+    }
+    div.post-container {
+        max-width: 800px;
+    }
+}
+
+@media screen and (max-width: 791px) {
+    div.post-container {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: unset;
+    }
+    div.post-container {
+        padding-left: calc(10px + 1rem);
+        padding-right: calc(10px + 1rem);
+        width: unset;
+    }
+}
+
+/**
+ * Custom styles for Notion pages.
+ */
+
+.notion-collection-page-properties {
+    display: none;
+}
+
+.notion-page {
+    padding: 0;
+    margin: 10vh 0;
+}

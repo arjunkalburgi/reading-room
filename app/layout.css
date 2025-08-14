@@ -1,0 +1,86 @@
+main { margin-bottom: 10vh; }
+
+header {
+    margin: 0 1rem;
+}
+@media screen and (min-width: 791px) {
+    header {
+        width: calc(100% - 2rem);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+header h1 {
+    margin: 0;
+}
+
+header h1 img {
+    width: 10rem;
+}
+@media screen and (max-width: 791px) {
+    header h1 img {
+        width: 15rem;
+        margin-top: 1rem;
+    }
+}
+
+footer {
+    /* $footer-padding-top: 20vh; replaced with 20vh directly */
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-content {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20vh 40px 8rem 40px;
+}
+@media screen and (min-width: 1240px) {
+    .footer-content {
+        max-width: 800px;
+    }
+}
+@media screen and (max-width: 791px) {
+    .footer-content {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: unset;
+    }
+}
+
+/* animation target (canvas injected by library) */
+div.footer-bg {
+    will-change: transform;
+    overflow: visible;
+    position: absolute;
+    width: 100vw;
+    height: 60%;
+    left: -50vw;
+    top: 10vh; /* calc(20vh / 2) */
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* static fallback for iOS */
+.clouds {
+    position: absolute;
+    top: 10vh; /* calc(20vh / 2) */
+    z-index: -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 42% 5% 42%;
+    pointer-events: none;
+}
+.clouds img {
+    justify-self: center;
+    height: 100vh;
+}
+.clouds img:first-of-type {
+    justify-self: end;
+}
+.clouds img:last-of-type {
+    justify-self: start;
+}
