@@ -26,11 +26,18 @@ function NullComponent() {
 }
 
 export default function NotionPage({ recordMap, meta }: { recordMap: ExtendedRecordMap, meta: PostMeta }) {
+
+    function createMailtoLink() {
+        const subject = encodeURIComponent(`Re: ${meta.title}`);
+        const body = encodeURIComponent("Hey Arjun! My name is ");
+        return `mailto:askalburgi@gmail.com?subject=${subject}&body=${body}`;
+    }
+
     return (
         <div className="post-container">
-            <small>{meta.readingMinutes} min read</small>
+            <small><a href="/">← More writing</a></small>
             <h1>{meta.title}</h1>
-            <small>by <a href="https://arjunkalburgi.com">Arjun Kalburgi</a> on {formatDate(meta.date)}</small>
+            <small>{meta.readingMinutes} min read by <a href="https://arjunkalburgi.com">Arjun Kalburgi</a> on {formatDate(meta.date)}</small>
             <NotionRenderer
                 recordMap={recordMap}
                 fullPage={false}
@@ -43,6 +50,12 @@ export default function NotionPage({ recordMap, meta }: { recordMap: ExtendedRec
                     Modal 
                 }}
             />
+            <p>
+                I would love to keep talking about this with you.
+            </p>
+            <p>
+                Feel free to shoot me a text, <a target="_blank" href={createMailtoLink()}>drop me a note</a> or <a target="_blank" href="https://calendar.app.google/MbZyXQHeCAa7LtiJ6">schedule a time to chat</a>.
+            </p>
         </div>
     );
 }

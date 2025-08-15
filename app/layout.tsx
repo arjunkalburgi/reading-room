@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <div className="layout">
                     <header className="site-header">
-                        <a href="/" aria-label="Writing homepage">
+                        <a href="https://arjunkalburgi.com" aria-label="Writing homepage">
                             <h1 className="logo">
                                 <img src="/logo.svg" alt="Arjun Kalburgi's icon" />
                             </h1>

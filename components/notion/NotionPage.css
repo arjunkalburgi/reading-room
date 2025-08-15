@@ -5,6 +5,7 @@ div.post-container {
     padding-top: 10rem;
     padding-right: 0rem;
     padding-left: 0rem;
+    padding-bottom: 10rem;
     max-width: 700px;
 }
 
@@ -34,6 +35,20 @@ div.post-container {
  * Custom styles for Notion pages.
  */
 
+:root {
+    --notion-font: normal 1rem/1.6 'Lato', sans-serif;
+    --font-color: var(--text-color);
+}
+
+.notion {
+    font-size: unset;
+    line-height: 1.8;
+}
+
+.notion-h {
+    font-weight: unset;
+}
+
 .notion-collection-page-properties {
     display: none;
 }
@@ -41,4 +56,8 @@ div.post-container {
 .notion-page {
     padding: 0;
     margin: 10vh 0;
+}
+
+.notion-text {
+    padding: 15px 0;
 }
