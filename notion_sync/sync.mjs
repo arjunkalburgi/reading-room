@@ -138,12 +138,11 @@ async function main() {
         
         const readingMinutes = estimateReadingTime(recordMap)
         
-        const hero =
-        Object.values(recordMap.block || {})
-        .map(b => b?.value)
-        .find(b => b?.type === 'image')?.properties?.source?.[0]?.[0] || null
+        const hero = Object.values(recordMap.block || {})
+            .map(b => b?.value)
+            .find(b => b?.type === 'image')?.properties?.source?.[0]?.[0] || null
         
-        indexMeta.push({ title, slug, date, tags, summary, hero, contentType, readingMinutes })
+        indexMeta.push({ title, slug, date, summary, hero, contentType, readingMinutes })
     }
     
     fs.writeFileSync(path.join(DATA_DIR, 'index.json'), JSON.stringify(indexMeta, null, 2))
