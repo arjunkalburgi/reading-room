@@ -3,6 +3,7 @@ import path from "node:path";
 import "./page.css";
 import type { PostMeta } from "@/components/notion/types";
 import { formatDate } from "@/components/utls";
+import Image from "next/image";
 
 export default function Home() {
     const file = path.join(process.cwd(), "data", "index.json");
@@ -19,7 +20,7 @@ export default function Home() {
                 ourselves. When we share our thoughts, emotions, and creativity, it fosters a deeper sense of fulfillment and
                 authenticity in everything we do.
             </p>
-            <p>Check out some of the things I've created:</p>
+            <p>Check out some of the things I&apos;ve created:</p>
 
             <section>
                 <div className="posts">
@@ -28,7 +29,7 @@ export default function Home() {
                         <a className="post" href={`/${hero.slug}`}>
                             <div className="post-art blog---featured-post---image">
                                 {hero.hero ? (
-                                    <img src={hero.hero} alt={hero.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                    <Image src={hero.hero} alt={hero.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                 ) : (
                                     <div className="no-art" aria-hidden="true" />
                                 )}
@@ -50,7 +51,7 @@ export default function Home() {
                         <a className="post" href={`/${post.slug}`}>
                             <div className="post-art">
                                 {post.hero ? (
-                                    <img src={post.hero} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                    <Image src={post.hero} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                 ) : (
                                     <div className="no-art" aria-hidden="true" />
                                 )}

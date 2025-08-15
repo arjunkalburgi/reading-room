@@ -7,6 +7,7 @@ import 'react-notion-x/src/styles.css';
 import './NotionPage.css';
 import type { PostMeta } from "@/components/notion/types";
 import { formatDate } from "@/components/utls";
+import Link from 'next/link';
 
 const Code = dynamic(() =>
     import('react-notion-x/build/third-party/code').then(m => m.Code)
@@ -35,9 +36,9 @@ export default function NotionPage({ recordMap, meta }: { recordMap: ExtendedRec
 
     return (
         <div className="post-container">
-            <small><a href="/">← More writing</a></small>
+            <small><Link href="/">← More writing</Link></small>
             <h1>{meta.title}</h1>
-            <small>{meta.readingMinutes} min read by <a href="https://arjunkalburgi.com">Arjun Kalburgi</a> on {formatDate(meta.date)}</small>
+            <small>{meta.readingMinutes} min read by <Link href="https://arjunkalburgi.com">Arjun Kalburgi</Link> on {formatDate(meta.date)}</small>
             <NotionRenderer
                 recordMap={recordMap}
                 fullPage={false}

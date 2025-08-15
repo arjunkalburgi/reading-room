@@ -3,6 +3,8 @@
 import "./layout.css";
 import { useEffect, useState } from "react";
 import { animate } from "@arjunanimations/leaves";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
     title: "Arjun's Reading Room",
@@ -55,11 +57,11 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     return (
         <div className="layout">
             <header className="site-header">
-                <a href="https://arjunkalburgi.com" aria-label="Writing homepage">
+                <Link href="https://arjunkalburgi.com" aria-label="Writing homepage">
                     <h1 className="logo">
                         <img src="/logo.svg" alt="Arjun Kalburgi's icon" />
                     </h1>
-                </a>
+                </Link>
             </header>
 
             {children}
@@ -67,9 +69,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
             <footer className="site-footer">
                 {isIOS ? (
                     <div className="clouds" aria-hidden="true">
-                        <img src="/cloud/blue.PNG" alt="blue cloud" />
-                        <img src="/cloud/pink.PNG" alt="pink cloud" />
-                        <img src="/cloud/orange.PNG" alt="orange cloud" />
+                        <Image src="/cloud/blue.PNG" alt="blue cloud" />
+                        <Image src="/cloud/pink.PNG" alt="pink cloud" />
+                        <Image src="/cloud/orange.PNG" alt="orange cloud" />
                     </div>
                 ) : (
                     <div className="footer-bg" aria-hidden="true" />
@@ -77,9 +79,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
 
                 <div className="footer-content">
                     <h2>Feeling inspired?</h2>
-                    <p>I'm always excited to meet thoughtful folks and life enjoyers.</p>
-                    <p>Building something? Facing a tough challenge? Exploring ideas? I'd love to help.</p>
-                    <p>I try to meet someone new every day. Maybe that's you?</p>
+                    <p>I&apos;m always excited to meet thoughtful folks and life enjoyers.</p>
+                    <p>Building something? Facing a tough challenge? Exploring ideas? I&apos;d love to help.</p>
+                    <p>I try to meet someone new every day. Maybe that&apos;s you?</p>
                     <p>
                         Feel free to <a href="mailto:askalburgi@gmail.com">drop me a note</a> or{" "}
                         <a href="https://calendar.app.google/MbZyXQHeCAa7LtiJ6">schedule a time to chat</a>.
